@@ -1,5 +1,6 @@
 from catboost import CatBoostClassifier
 from app.dependencies.config import config
+from pathlib import Path
 
 
 class HealthRiskClassifier:
@@ -18,7 +19,8 @@ class HealthRiskClassifier:
 
         if HealthRiskClassifier._model is None:
             _model = CatBoostClassifier()
-
-            _model.load_model(config.health_risk_classifier_model_path)
-
+            print("Loading model...")
+            path = Path(__file__).resolve().parent / config["health_risk_classifier_model_filename"]
+            _model.load_model(path)
+            print("Model loaded.")
         return _model

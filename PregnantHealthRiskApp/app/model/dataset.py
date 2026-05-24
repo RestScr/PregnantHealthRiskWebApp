@@ -1,4 +1,4 @@
-from data_record import DataRecord
+from app.model.data_record import DataRecord
 from pydantic import BaseModel, ConfigDict
 
 class Dataset(BaseModel):
