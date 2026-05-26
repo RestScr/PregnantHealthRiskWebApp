@@ -1,9 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿
 
-namespace Model;
+namespace ViewModel;
 
-public partial class MainVM : ObservableObject
+public partial class MainVM
 {
-    [ObservableProperty]
-    private Pregnant _editingPregnant;
 }
