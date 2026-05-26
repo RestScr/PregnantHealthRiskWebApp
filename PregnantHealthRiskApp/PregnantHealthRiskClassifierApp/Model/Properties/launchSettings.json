@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Профиль 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Misha\\Subjects\\it-academy\\app_repos\\PregnantHealthRiskApp\\PregnantHealthRiskClassifierApp\\View\\bin\\Debug\\net8.0-windows\\View.exe"
+    }
+  }
+}

@@ -1,0 +1,180 @@
+﻿<Window x:Class="View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        xmlns:converters="clr-namespace:ViewModel.Converters;assembly=ViewModel"
+        xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
+        xmlns:validators="clr-namespace:ViewModel.Validators;assembly=ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="400" 
+        Closing="Window_Closing">
+    <Window.Resources>
+        <!-- Конвертеры -->
+        <converters:HealthRiskToTextConverter
+            x:Key="HealthRiskToTextConverter"/>
+        <converters:HealthRiskToColorConverter
+            x:Key="HealthRiskToColorConverter"/>
+
+        <!-- Валидаторы -->
+        <validators:PositiveValueValidator
+            x:Key="PositiveDoubleValueValidator"/>
+    </Window.Resources>
+    <Grid>
+        <GroupBox
+            Header="Ввод характеристик беременной"
+            Margin="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Левая колонка -->
+                <Viewbox
+                    Grid.Column="0">
+                    <StackPanel
+                        Orientation="Vertical"
+                        Width="200"
+                        Height="260">
+                        <Label
+                            Content="Возраст:"
+                            Margin="3"
+                            />
+                        <Label
+                            Content="Систолическое давление:"
+                            Margin="3"/>
+                        <Label
+                            Content="Диастолическое давление:"
+                            Margin="3"/>
+                        <Label
+                            Content="Уровень сахара в крови (в %):"
+                            Margin="3"/>
+                        <Label
+                            Content="Температура тела в фаренгейтах:"
+                            Margin="3"/>
+                        <Label
+                            Content="Пульс (ударов в мин):"
+                            Margin="3"/>
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Margin="3">
+                            <Button
+                                Content="Оценить риск"
+                                Command="{Binding GetPredictionCommand}"
+                                Height="25"
+                                Width="100"
+                                Margin="3, 6"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Viewbox>
+                
+                
+                <!-- Правая колонка -->
+                <Viewbox
+                    Grid.Column="1">
+                    <StackPanel
+                        Orientation="Vertical"
+                        Width="200"
+                        Height="260"
+                        >
+                        <TextBox
+                            Margin="6, 6">
+                            <TextBox.Text>
+                                <Binding 
+                                    Path="EditablePregnant.Age"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validators:PositiveValueValidator/>
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox
+                            Margin="6, 9">
+                            <TextBox.Text>
+                                <Binding 
+                                    Path="EditablePregnant.SystolicBP"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validators:PositiveValueValidator/>
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox
+                            Margin="6, 6">
+                            <TextBox.Text>
+                                <Binding 
+                                    Path="EditablePregnant.DiastolicBP"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validators:PositiveValueValidator/>
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox
+                            Margin="6, 8">
+                            <TextBox.Text>
+                                <Binding 
+                                    Path="EditablePregnant.BS"
+                                    >
+                                    <Binding.ValidationRules>
+                                        <validators:PositiveValueValidator/>
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox
+                            Margin="5">
+                            <TextBox.Text>
+                                <Binding 
+                                    Path="EditablePregnant.BodyTemp"
+                                    >
+                                    <Binding.ValidationRules>
+                                        <validators:PositiveValueValidator/>
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox
+                            Margin="6, 10">
+                            <TextBox.Text>
+                                <Binding 
+                                    Path="EditablePregnant.HeartRate"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validators:PositiveValueValidator/>
+                                        
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Margin="3, 3">
+                            <Label
+                                Content="Риск здоровья:"
+                                />
+                            <Label
+                                Content="{Binding PredictedHealthRisk, 
+                                Converter={StaticResource HealthRiskToTextConverter}}"
+                                Foreground="{Binding PredictedHealthRisk, 
+                                Converter={StaticResource HealthRiskToColorConverter}}"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Viewbox>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>
