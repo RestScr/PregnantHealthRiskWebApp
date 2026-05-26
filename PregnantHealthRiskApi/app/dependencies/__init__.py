@@ -2,12 +2,11 @@
     Файл инициализации главного роутера
     для API.
 """
-
 from fastapi import APIRouter
 
-from routes import home
-from routes import model_request
-from routes import model_get_prediction
+from PregnantHealthRiskApi.app.routes import home
+from PregnantHealthRiskApi.app.routes import model_request
+from PregnantHealthRiskApi.app.routes import model_get_prediction
 
 main_router = APIRouter()
 
