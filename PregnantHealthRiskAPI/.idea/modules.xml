@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PregnantHealthRiskAPI.iml" filepath="$PROJECT_DIR$/.idea/PregnantHealthRiskAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PregnantHealthRiskApp.iml" filepath="$PROJECT_DIR$/.idea/PregnantHealthRiskApp.iml" />
     </modules>
   </component>
 </project>

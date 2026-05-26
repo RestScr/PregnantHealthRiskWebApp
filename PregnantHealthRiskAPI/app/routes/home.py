@@ -3,7 +3,7 @@
 """
 
 from fastapi import APIRouter
-from app.model.status_data.status_data import StatusData
+from PregnantHealthRiskApi.app.model.status_data.status_data import StatusData
 
 router = APIRouter()
 
