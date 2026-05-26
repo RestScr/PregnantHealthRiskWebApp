@@ -5,8 +5,100 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="300" Width="400">
     <Grid>
+        <GroupBox
+            Header="Ввод характеристик беременной">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Левая колонка -->
+                <StackPanel
+                    Orientation="Vertical"
+                    Grid.Column="0">
+                    <Label
+                        Content="Возраст:"
+                        Margin="3"
+                        />
+                    <Label
+                        Content="Систолическое давление:"
+                        Margin="3"/>
+                    <Label
+                        Content="Диастолическое давление:"
+                        Margin="3"/>
+                    <Label
+                        Content="Уровень сахара в крови (в %):"
+                        Margin="3"/>
+                    <Label
+                        Content="Температура тела (в фаренгейтах):"
+                        Margin="3"/>
+                    <Label
+                        Content="Пульс (ударов в мин):"
+                        Margin="3"/>
+                    <StackPanel
+                        Orientation="Horizontal"
+                        Margin="3">
+                        <Button
+                            Content="Оценить риск"
+                            Command=""
+                            Height="25"
+                            Width="100"
+                            Margin="3, 6"/>
+                    </StackPanel>
+                    
+                </StackPanel>
+                
+                <!-- Правая колонка -->
+                <StackPanel
+                    Orientation="Vertical"
+                    Grid.Column="1">
+                    <TextBox
+                        Margin="6, 6">
+                        <TextBox.Text>
+                            <Binding Path="None"/>
+                        </TextBox.Text>
+                    </TextBox>
+                    <TextBox
+                        Margin="6, 11">
+                        <TextBox.Text>
+                            <Binding Path="None"/>
+                        </TextBox.Text>
+                    </TextBox>
+                    <TextBox
+                        Margin="6, 3">
+                        <TextBox.Text>
+                            <Binding Path="None"/>
+                        </TextBox.Text>
+                    </TextBox>
+                    <TextBox
+                        Margin="6, 10">
+                        <TextBox.Text>
+                            <Binding Path="None"/>
+                        </TextBox.Text>
+                    </TextBox>
+                    <TextBox
+                        Margin="5">
+                        <TextBox.Text>
+                            <Binding Path="None"/>
+                        </TextBox.Text>
+                    </TextBox>
+                    <TextBox
+                        Margin="6, 8">
+                        <TextBox.Text>
+                            <Binding Path="None"/>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label
+                        Content="Риск здоровья:"/>
+                    <Label
+                        Content=""/>
+                </StackPanel>
+                
+            </Grid>
+        </GroupBox>
 
     </Grid>
 </Window>
