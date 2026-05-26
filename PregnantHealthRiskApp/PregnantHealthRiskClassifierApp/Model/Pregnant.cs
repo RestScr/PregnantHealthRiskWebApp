@@ -14,16 +14,11 @@ public partial class Pregnant : ObservableObject
     private uint _diastolicBP;
 
     [ObservableProperty]
-    private double _bloodSugar = 0;
+    private double _bS= 0.0;
 
     [ObservableProperty]
-    private double _bodyTemperature = 0;
+    private double _bodyTemp = 0.0;
 
     [ObservableProperty]
     private uint _heartRate = 0;
-
-    public int BloodSugarDelta
-    {
-        get => (int)SystolicBP - (int)DiastolicBP;
-    }
 }

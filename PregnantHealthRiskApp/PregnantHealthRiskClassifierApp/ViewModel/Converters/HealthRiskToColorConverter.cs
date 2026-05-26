@@ -1,25 +1,25 @@
 ﻿
+
 using System.Globalization;
 using System.Windows.Data;
 using Model.Enums;
 
-
 namespace ViewModel.Converters;
 
-public class HealthRiskToTextConverter : IValueConverter
+public class HealthRiskToColorConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         switch ((HealthRisk)value)
         {
             case HealthRisk.Low:
-                return "Низкий";
+                return "#009900";
             case HealthRisk.Medium:
-                return "Средний";
+                return "#008899";
             case HealthRisk.High:
-                return "Высокий";
+                return "#880000";
             default:
-                return "Неизвестен";
+                return "#000000";
         }
     }
 
@@ -27,11 +27,11 @@ public class HealthRiskToTextConverter : IValueConverter
     {
         switch ((string)value)
         {
-            case "Низкий":
+            case "#009900":
                 return HealthRisk.Low;
-            case "Средний":
+            case "#008899":
                 return HealthRisk.Medium;
-            case "Высокий":
+            case "#880000":
                 return HealthRisk.High;
             default:
                 return HealthRisk.Unknown;

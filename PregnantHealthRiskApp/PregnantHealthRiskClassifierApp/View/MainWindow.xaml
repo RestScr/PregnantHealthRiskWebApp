@@ -4,8 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
+        xmlns:converters="clr-namespace:ViewModel.Converters;assembly=ViewModel"
+        xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
+        xmlns:validators="clr-namespace:ViewModel.Validators;assembly=ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="400">
+        Title="MainWindow" Height="300" Width="400" 
+        Closing="Window_Closing">
+    <Window.Resources>
+        <!-- Конвертеры -->
+        <converters:HealthRiskToTextConverter
+            x:Key="HealthRiskToTextConverter"/>
+        <converters:HealthRiskToColorConverter
+            x:Key="HealthRiskToColorConverter"/>
+
+        <!-- Валидаторы -->
+        <validators:PositiveValueValidator
+            x:Key="PositiveDoubleValueValidator"/>
+    </Window.Resources>
     <Grid>
         <GroupBox
             Header="Ввод характеристик беременной"
@@ -47,7 +62,7 @@
                             Margin="3">
                             <Button
                                 Content="Оценить риск"
-                                Command=""
+                                Command="{Binding GetPredictionCommand}"
                                 Height="25"
                                 Width="100"
                                 Margin="3, 6"/>
@@ -68,46 +83,92 @@
                         <TextBox
                             Margin="6, 6">
                             <TextBox.Text>
-                                <Binding Path="None"/>
+                                <Binding 
+                                    Path="EditablePregnant.Age"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validators:PositiveValueValidator/>
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
                             </TextBox.Text>
                         </TextBox>
                         <TextBox
                             Margin="6, 9">
                             <TextBox.Text>
-                                <Binding Path="None"/>
+                                <Binding 
+                                    Path="EditablePregnant.SystolicBP"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validators:PositiveValueValidator/>
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
                             </TextBox.Text>
                         </TextBox>
                         <TextBox
                             Margin="6, 6">
                             <TextBox.Text>
-                                <Binding Path="None"/>
+                                <Binding 
+                                    Path="EditablePregnant.DiastolicBP"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validators:PositiveValueValidator/>
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
                             </TextBox.Text>
                         </TextBox>
                         <TextBox
                             Margin="6, 8">
                             <TextBox.Text>
-                                <Binding Path="None"/>
+                                <Binding 
+                                    Path="EditablePregnant.BS"
+                                    >
+                                    <Binding.ValidationRules>
+                                        <validators:PositiveValueValidator/>
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
                             </TextBox.Text>
                         </TextBox>
                         <TextBox
                             Margin="5">
                             <TextBox.Text>
-                                <Binding Path="None"/>
+                                <Binding 
+                                    Path="EditablePregnant.BodyTemp"
+                                    >
+                                    <Binding.ValidationRules>
+                                        <validators:PositiveValueValidator/>
+                                        <DataErrorValidationRule/>
+                                    </Binding.ValidationRules>
+                                </Binding>
                             </TextBox.Text>
                         </TextBox>
                         <TextBox
                             Margin="6, 10">
                             <TextBox.Text>
-                                <Binding Path="None"/>
+                                <Binding 
+                                    Path="EditablePregnant.HeartRate"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validators:PositiveValueValidator/>
+                                        
+                                    </Binding.ValidationRules>
+                                </Binding>
                             </TextBox.Text>
                         </TextBox>
                         <StackPanel
                             Orientation="Horizontal"
                             Margin="3, 3">
                             <Label
-                                Content="Риск здоровья:"/>
+                                Content="Риск здоровья:"
+                                />
                             <Label
-                                Content=""/>
+                                Content="{Binding PredictedHealthRisk, 
+                                Converter={StaticResource HealthRiskToTextConverter}}"
+                                Foreground="{Binding PredictedHealthRisk, 
+                                Converter={StaticResource HealthRiskToColorConverter}}"/>
                         </StackPanel>
 
                     </StackPanel>
