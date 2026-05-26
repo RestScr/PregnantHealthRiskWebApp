@@ -3,12 +3,12 @@
 """
 import uuid
 from fastapi import APIRouter, BackgroundTasks
-from PregnantHealthRiskApi.app.ai_models.health_risk_classifier import HealthRiskClassifier
-from PregnantHealthRiskApi.app.model.dataset import Dataset
-from PregnantHealthRiskApi.app.model.status_data.status_data_with_content import StatusDataWithContent
+from app.ai_models.health_risk_classifier import HealthRiskClassifier
+from app.model.dataset import Dataset
+from model.status_data.status_data_with_content import StatusDataWithContent
 import pandas
 
-from PregnantHealthRiskApi.app.routes.routes_dependencies import yPrediction
+from app.routes.routes_dependencies import yPrediction
 
 router = APIRouter()
 
