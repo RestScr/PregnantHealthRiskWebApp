@@ -18,7 +18,7 @@ public static class APIOperator
     private static string Url { get; set; } = "http://127.0.0.1:8000/";
 
     private static string PostDataUrl = "predict";
-    private static string GetPredictionUrl = "predict/{{taskId}}?task_id={0}";
+    private static string GetPredictionUrl = "predict/{0}";
 
     /// <summary>
     /// Ссылка на объект для работы с API.
@@ -45,6 +45,7 @@ public static class APIOperator
             return HealthRisk.Unknown;
 
         Dataset dataset = new Dataset(pregnant);
+
 
         // POST-Запрос
         HttpResponseMessage postResponse = await Client.PostAsJsonAsync(
@@ -96,7 +97,7 @@ public static class APIOperator
 
         foreach (JsonElement item in element.EnumerateArray())
         {
-            predictions.Add(item.GetDouble());
+            predictions.Add(item.EnumerateArray().First().GetDouble());
         }
 
         return (HealthRisk)((int)predictions.First());
