@@ -1,5 +1,6 @@
-from PregnantHealthRiskApi.app.model.data_record import DataRecord
+from model.data_record import DataRecord
 from pydantic import BaseModel, ConfigDict
+
 
 class Dataset(BaseModel):
     """

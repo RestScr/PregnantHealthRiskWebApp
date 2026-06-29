@@ -3,8 +3,8 @@
 """
 
 from fastapi import APIRouter, HTTPException
-from PregnantHealthRiskApi.app.model.status_data.status_data_with_content import StatusDataWithContent
-from PregnantHealthRiskApi.app.routes.routes_dependencies import yPrediction
+from model.status_data.status_data_with_content import StatusDataWithContent
+from routes.routes_dependencies import yPrediction
 
 router = APIRouter()
 

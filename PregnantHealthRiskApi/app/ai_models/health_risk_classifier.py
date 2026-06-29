@@ -1,5 +1,5 @@
 from catboost import CatBoostClassifier
-from PregnantHealthRiskApi.app.ai_models.ai_dependencies import config
+from ai_models.ai_dependencies import config
 from pathlib import Path
 
 

@@ -1,4 +1,4 @@
-from PregnantHealthRiskApi.app.model.status_data.status_data import StatusData
+from model.status_data.status_data import StatusData
 from pydantic import ConfigDict
 
 
