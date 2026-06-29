@@ -116,7 +116,7 @@ app
 - `"Records"` - Массив данных
 - `"Age"` - Возраст пациентки
 - `"SystolicBP"` - Систоилческое давление
-- `"DiastolicBP"` - ДИастолическое давление
+- `"DiastolicBP"` - Диастолическое давление
 - `"BS"` - Уровень сахара в крови (в %)
 - `"BodyTemp"` - Температура тела (в фаренгейтах)
 - `"HeartRate"` - Пульс
@@ -127,6 +127,28 @@ app
   "Success": true,
   "Message": "Received data for prediction...",
   "Content": "a56e1541-4b97-4a0e-bfba-0603aece2107"
+}
+```
+
+В случае ошибки (валидации, т. е. неправильная структура или одно из значений будет меньше нуля) высвечивается подобная ошибка:
+```json
+{
+  "detail": [
+    {
+      "type": "greater_than_equal",
+      "loc": [
+        "body",
+        "Records",
+        0,
+        "SystolicBP"
+      ],
+      "msg": "Input should be greater than or equal to 0",
+      "input": -1,
+      "ctx": {
+        "ge": 0
+      }
+    }
+  ]
 }
 ```
   
